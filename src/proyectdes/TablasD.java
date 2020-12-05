@@ -13,7 +13,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import proyectdes.Valores;
-
+/**
+ *
+ * @author Vanessa Trejo
+ */
 
  
 public class TablasD extends javax.swing.JInternalFrame {
@@ -45,7 +48,7 @@ public class TablasD extends javax.swing.JInternalFrame {
         tm.addColumn("NotNULL?");
         tm.addColumn("Primary Key");
     }
-     private void modificarEntidad(String key,String tipoEntidad){
+     private void Entidad(String key,String tipoEntidad){
         
         
         if (tipoEntidad.equals("entidad")) {
@@ -133,16 +136,7 @@ public class TablasD extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         for (int i = 0; i < jTable1.getRowCount(); i++) {
-            if (IsSelected(i, 5, jTable1)) {
-            }
-        }
         
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
-            if (IsSelected(i, 4, jTable1)) {
-                
-            }
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
