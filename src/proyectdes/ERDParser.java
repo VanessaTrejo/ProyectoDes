@@ -26,6 +26,7 @@ public class ERDParser {
     private ArrayList<String> ke= new ArrayList<>();
     
  
+    private ArrayList<String> relaciones = new ArrayList<>();
     
        public ArrayList<String> keysEntidades(){
         return ke;
@@ -36,6 +37,10 @@ public class ERDParser {
     
     public ERDParser(String direccion){
         this.ruta = direccion;
+    }
+    
+    public ArrayList<String> getrelaciones(){   
+        return this.relaciones;
     }
     
     public Hashtable<String,ArrayList> nuevoHash(){
@@ -85,6 +90,8 @@ public class ERDParser {
                     case 2:
                         System.out.println(" *");
                         casos = new Valores(v, null, null, null, false, false);
+                      
+                        casos.setllave_forania(true);
                         break;
                     default:
                         System.out.println("");
@@ -108,15 +115,28 @@ public class ERDParser {
             System.out.println(rr.getString("nombre"));
            
 
-            JSONArray p = rr.getJSONArray("cardinalidades");
+            JSONArray cards = rr.getJSONArray("cardinalidades");
 
-            int n = p.length();
+            String r1 = ""; 
+            String r2 = "";
+            int n = cards.length();
 
             for (int i = 0; i < n; i++) {
-                JSONObject e1 = p.getJSONObject(i);
+                JSONObject e1 = cards.getJSONObject(i);
+                if(i == 0){
+                    r1 = e1.getString("entidad")+ " " + e1.getString("max");
+                }else{
+                    r2 = e1.getString("entidad")+ " " + e1.getString("max");
+                }
 
-                System.out.printf("\t%s (%s,%s)\n", e1.getString("entidad"), e1.getString("min"),  e1.getString("max"));
-            }}
+                System.out.printf("\t%s (%s,%s)\n", e1.getString("entidad"),
+                        e1.getString("min"),
+                        e1.getString("max"));
+
+            }
+            relaciones.add(r1+ " " + r2);
+            System.out.println(relaciones);
+        }
         return hash;
     }
         
@@ -180,9 +200,9 @@ public class ERDParser {
                         break;
                 }
                 
-                entidadvalor.add(casos);
+                entidadvalor.add(  casos);
             }
-            hash.put(entityName, entidadvalor);
+            hash.put(entityName,   entidadvalor);
 
         }
         return hash;
