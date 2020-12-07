@@ -14,7 +14,11 @@ import javax.swing.JOptionPane;
 import proyectdes.Valores;
 import proyectdes.ERDParser;
 
-
+/**
+ *
+ * @author Vanessa Trejo
+ */
+ 
 public class TablasJ extends javax.swing.JFrame {
    
     Hashtable<String,ArrayList> EntidadesDebiles;
@@ -28,7 +32,7 @@ public class TablasJ extends javax.swing.JFrame {
        
     }
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -89,9 +93,9 @@ public class TablasJ extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
+    private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {                                      
  JFileChooser jfile = new JFileChooser();
         jfile.showOpenDialog(this);
          File archivo = jfile.getSelectedFile();
@@ -119,6 +123,10 @@ public class TablasJ extends javax.swing.JFrame {
                         valores = EntidadesDebiles.get(keysd);
                         System.out.println(keysd);
                         TablasD td = new TablasD(keysd, valores, tipo);
+                        td.setParser(tabla);
+                       td.hashentd(EntidadesDebiles);
+                        
+                        
                         panel.add(td);
                         td.show();
                     }
@@ -127,10 +135,12 @@ public class TablasJ extends javax.swing.JFrame {
               
                 for (String keysd : keyy) {
                     tipo = "entidad";
-                    valores = EntidadesNormal.get(keysd);
+                    valores = EntidadesNormal.get  (keysd);
                     System.out.println(keysd);
 
-                    TablasD td = new TablasD(keysd, valores, tipo);
+                    TablasD td = new TablasD(keysd, valores, tipo);     
+                    td.setParser(tabla);
+                    td.hashent(EntidadesNormal);
                     panel.add(td);
                     td.show();
 
@@ -139,7 +149,7 @@ public class TablasJ extends javax.swing.JFrame {
         
         
         
-    }//GEN-LAST:event_AbrirActionPerformed
+    }                                     
 
     /**
      * /*    llenarJTable();
@@ -196,7 +206,7 @@ public class TablasJ extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JMenuItem Abrir;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu1;
@@ -205,5 +215,5 @@ public class TablasJ extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JDesktopPane panel;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
