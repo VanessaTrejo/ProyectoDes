@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package proyectdes;
-
+/**
+ *
+ * @author Vanessa Trejo
+ */
 public class Valores {
     private String name;
     private String data_type;
@@ -12,6 +15,9 @@ public class Valores {
     private String precision;
     private boolean not_null;
     private boolean primary_key;
+    private boolean llave_forania;
+    private String tablarelacionada;
+    
     
     public Valores(String name,String data_type,String length,String precision,boolean not_null,boolean primary_key){
         this.name = name;
@@ -22,12 +28,29 @@ public class Valores {
         this.primary_key = primary_key;
         
     }
+    
+    public String tablarelacionada(){        
+        return this.tablarelacionada;
+    }
+    public void settablarelacionada(String tablarelacionada){
+        this.tablarelacionada = tablarelacionada;
+    }
+    
+    public boolean llave_forania(){
+        return this.llave_forania;
+    }
+    
+    public void setllave_forania(boolean llave_forania){  
+        this.llave_forania = llave_forania;
+    }
+    
+    
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) {  
         this.name = name;
     }
 
